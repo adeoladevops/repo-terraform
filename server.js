@@ -1,20 +1,15 @@
 const express = require('express');
 const path = require('path');
-const bodyParser = require('body-parser');
 
 const app = express();
 const PORT = 3000;
 
-// Middleware to parse JSON
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-
 // Serve static files from the 'public' directory
-app.use(express.static(path.join(__dirname, 'public/build')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Serve the index.html file for the root URL
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public/build', 'index.html'));
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 // Mock data storage
